@@ -5376,6 +5376,10 @@ railroad-diagrams@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
 
+ramda@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
+
 randexp@^0.4.2:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/randexp/-/randexp-0.4.4.tgz#ba68265f4a9f9e85f5814d34e160291f939f168e"
@@ -5654,6 +5658,10 @@ redent@^1.0.0:
 reduce-component@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/reduce-component/-/reduce-component-1.0.1.tgz#e0c93542c574521bea13df0f9488ed82ab77c5da"
+
+redux-duck@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/redux-duck/-/redux-duck-1.0.2.tgz#2ac0c63e2e1a4b3d409e7c872205690b6ea53380"
 
 redux-saga@^0.16.0:
   version "0.16.0"
