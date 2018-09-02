@@ -151,5 +151,5 @@ clean
     .then(() => console.log('\n ## all done!'))
     .catch(() => {
         console.error('\n ## check the errors above.')
-        process.exit(1)
-    }) //eslint-disable-line
+        process.exit(1) // eslint-disable-line no-process-exit
+    })
