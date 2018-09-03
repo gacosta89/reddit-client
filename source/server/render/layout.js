@@ -7,6 +7,7 @@ export default ({ title, rootMarkup, initialState }) => {
         <link rel="shortcut icon" type="image/png" href="/static/assets/favicon.png">
         <link href="/static/assets/normalize.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
         <style>
           html {
             height: 100%;
