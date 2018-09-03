@@ -6,7 +6,7 @@ export const SET_TOKEN = ns.defineType('SET_TOKEN')
 export const setToken = ns.createAction(SET_TOKEN)
 
 const iniState = {
-    token: '-EB5tmcFpmQXOZWSCRu3viJsxlZ8',
+    token: '',
 }
 
 export default ns.createReducer(
