@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects'
 
 import { getAuthUrl } from 'shared/app/selectors'
-import { setAuth } from 'shared/auth/reducer'
+import { setToken } from 'shared/auth/reducer'
 
 export const token = function*() {
     const url = yield select(getAuthUrl)
@@ -23,6 +23,6 @@ export const token = function*() {
     if (res.ok) {
         const data = yield call([res, res.json])
 
-        yield put(setAuth({ token: data.access_token }))
+        yield put(setToken({ token: data.access_token }))
     }
 }

@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 config/BUILD
 npm-debug.log
 yarn-error.log

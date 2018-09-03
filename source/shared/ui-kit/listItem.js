@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div`
+import Paper from '@material-ui/core/Paper'
+
+const Container = styled(Paper)`
     display: flex;
     flex-direction: row;
     height: 130px;
-    border: solid 1px black;
+    margin: 5px;
+    border-radius: 0px;
 `
 
 const Thumbnail = styled(({ src, className }) => (
@@ -13,17 +16,32 @@ const Thumbnail = styled(({ src, className }) => (
         <img src={src} />
     </div>
 ))`
+    padding: 16px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     img {
-        height: 100px;
-        width: 120px;
+        width: 80px;
     }
 `
 
+const Icon = styled(({ className, children }) => (
+    <div className={className}>
+        <i className="material-icons">{children}</i>
+    </div>
+))`
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+`
+
 const Body = styled.div`
-    padding: 10px;
+    flex: 1;
+    padding: 16px;
+    background-color: #c63f17;
+    color: rgba(255, 255, 255, 0.85);
 `
 const Title = styled.div`
     padding-bottom: 5px;
@@ -41,12 +59,20 @@ const Title = styled.div`
 const Description = styled.div`
     font-size: 14px;
     font-weight: 400;
+    text-align: justify;
 `
 
 const normalizeLen = (len, append = '...') => str =>
     str.length > len ? str.slice(0, len - 3).concat(append) : str
 
-const normalizeDesc = normalizeLen(211)
+const normalizeDesc = normalizeLen(193)
+
+const mapThumbnail = thumbnail =>
+    thumbnail.includes('thumbs.redditmedia.com/') ? (
+        <Thumbnail src={thumbnail} />
+    ) : (
+        <Icon>image</Icon>
+    )
 
 const ListItem = ({
     title,
@@ -56,8 +82,8 @@ const ListItem = ({
     thumbnailUrl,
     status,
 }) => (
-    <Container>
-        <Thumbnail src={thumbnailUrl} />
+    <Container square>
+        {mapThumbnail(thumbnailUrl)}
         <Body>
             <Title status={status}>
                 <span>{title}</span>
