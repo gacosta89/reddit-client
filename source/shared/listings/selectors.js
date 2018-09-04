@@ -3,12 +3,14 @@ import { createSelector } from 'reselect'
 export const getTopList = createSelector(
     state => state.listings.top,
     top =>
-        Object.values(top).map(val => ({
-            id: val.id,
-            title: val.author,
-            description: val.title,
-            caption: val.created_utc,
-            overline: val.num_comments,
-            thumbnailUrl: val.thumbnail,
-        }))
+        Object.values(top)
+            .filter(item => !item.exclude)
+            .map(item => ({
+                ...item,
+                title: item.author,
+                description: item.title,
+                caption: item.created_utc,
+                overline: item.num_comments,
+                thumbnailUrl: item.thumbnail,
+            }))
 )

@@ -36,6 +36,10 @@ const Title = styled.div`
     padding-bottom: 5px;
     font-size: 24px;
     font-weight: 400;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     .caption {
         font-size: 12px;
         padding-left: 10px;
@@ -103,6 +107,7 @@ class ListItem extends Component {
             description,
             thumbnailUrl,
             status,
+            show: showProp,
         } = this.props
 
         const { hovered, show } = this.state
@@ -110,7 +115,12 @@ class ListItem extends Component {
         const validThumbnail = thumbnailUrl.includes('thumbs.redditmedia.com/')
 
         return (
-            <Collapse in={show} unmountOnExit timeout={400}>
+            <Collapse
+                in={show && showProp}
+                unmountOnExit
+                timeout={400}
+                onExited={this.props.dismiss}
+            >
                 <Container
                     square
                     onMouseEnter={this.onMouseEnter}
@@ -132,8 +142,11 @@ class ListItem extends Component {
                     <Body>
                         <Title status={status}>
                             <span>{title.toLowerCase()}</span>
-                            <span className="caption">{caption}</span>
-                            <span className="overline">{overline}</span>
+                            <div className="caption">
+                                {caption}
+                                &nbsp; &nbsp;
+                                {overline}
+                            </div>
                         </Title>
                         <Description status={status}>
                             {normalizeDesc(description)}
