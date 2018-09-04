@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { compose } from 'ramda'
 
 import Paper from '@material-ui/core/Paper'
+import Collapse from '@material-ui/core/Collapse'
 
 const Container = styled(Paper)`
     display: flex;
@@ -65,20 +67,33 @@ const SecondaryAction = styled.div`
     padding: 16px;
     transition: bottom 0.5s;
     bottom: ${props => (props.hovered ? '0px' : '-26px')};
+    cursor: pointer;
 `
 
 const normalizeLen = (len, append = '...') => str =>
     str.length > len ? str.slice(0, len - 3).concat(append) : str
 
-const normalizeDesc = normalizeLen(193)
+const decode = str => str.replace(/&amp;/g, '&')
+
+const normalizeDesc = compose(
+    decode,
+    normalizeLen(182)
+)
 
 class ListItem extends Component {
+    static defaultProps = {
+        dismiss: () => {},
+    }
+
     state = {
         hovered: false,
+        show: true,
     }
 
     onMouseEnter = () => this.setState({ hovered: true })
     onMouseLeave = () => this.setState({ hovered: false })
+
+    onDismiss = () => this.setState({ show: false })
 
     render() {
         const {
@@ -90,35 +105,42 @@ class ListItem extends Component {
             status,
         } = this.props
 
-        const { hovered } = this.state
+        const { hovered, show } = this.state
 
         const validThumbnail = thumbnailUrl.includes('thumbs.redditmedia.com/')
 
         return (
-            <Container
-                square
-                onMouseEnter={this.onMouseEnter}
-                onMouseLeave={this.onMouseLeave}
-            >
-                <Thumbnail i={!validThumbnail}>
-                    {validThumbnail ? (
-                        <img src={thumbnailUrl} />
-                    ) : (
-                        <i className="material-icons">image</i>
-                    )}
-                    <SecondaryAction hovered={hovered}>Dismiss</SecondaryAction>
-                </Thumbnail>
-                <Body>
-                    <Title status={status}>
-                        <span>{title}</span>
-                        <span className="caption">{caption}</span>
-                        <span className="overline">{overline}</span>
-                    </Title>
-                    <Description status={status}>
-                        {normalizeDesc(description)}
-                    </Description>
-                </Body>
-            </Container>
+            <Collapse in={show} unmountOnExit timeout={400}>
+                <Container
+                    square
+                    onMouseEnter={this.onMouseEnter}
+                    onMouseLeave={this.onMouseLeave}
+                >
+                    <Thumbnail i={!validThumbnail}>
+                        {validThumbnail ? (
+                            <img src={thumbnailUrl} />
+                        ) : (
+                            <i className="material-icons">image</i>
+                        )}
+                        <SecondaryAction
+                            hovered={hovered}
+                            onClick={this.onDismiss}
+                        >
+                            Dismiss
+                        </SecondaryAction>
+                    </Thumbnail>
+                    <Body>
+                        <Title status={status}>
+                            <span>{title.toLowerCase()}</span>
+                            <span className="caption">{caption}</span>
+                            <span className="overline">{overline}</span>
+                        </Title>
+                        <Description status={status}>
+                            {normalizeDesc(description)}
+                        </Description>
+                    </Body>
+                </Container>
+            </Collapse>
         )
     }
 }
