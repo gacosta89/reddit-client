@@ -10,7 +10,7 @@ module.exports = {
     resolve: {
         modules: ['node_modules', path.join(__dirname, 'source')],
     },
-    entry: ['./client/index'],
+    entry: ['babel-polyfill', './client/index'],
     output: {
         path: path.join(__dirname, 'build/client'),
         filename: 'index.js',
