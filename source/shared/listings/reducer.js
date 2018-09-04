@@ -15,16 +15,20 @@ export const dismiss = ns.createAction(DISMISS)
 export const EXCLUDE = ns.defineType('EXCLUDE')
 export const exclude = ns.createAction(EXCLUDE)
 
+export const SELECT = ns.defineType('SELECT')
+export const select = ns.createAction(SELECT)
+
 const iniState = {
     top: {},
     fetching: {},
+    activeId: '',
 }
 
 const byId = compose(
     indexBy(prop('id')),
     map(
         compose(
-            merge({ show: true, exclude: false }),
+            merge({ show: true, exclude: false, visited: false }),
             prop('data')
         )
     )
@@ -63,6 +67,17 @@ export default ns.createReducer(
                 [id]: {
                     ...state.top[id],
                     exclude: true,
+                },
+            },
+        }),
+        [SELECT]: (state, { payload: { id } }) => ({
+            ...state,
+            activeId: id,
+            top: {
+                ...state.top,
+                [id]: {
+                    ...state.top[id],
+                    visited: true,
                 },
             },
         }),

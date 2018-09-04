@@ -29,13 +29,14 @@ const Thumbnail = styled.div`
 const Body = styled.div`
     flex: 1;
     padding: 16px;
-    background-color: #c63f17;
-    color: rgba(255, 255, 255, 0.85);
+    background-color: ${props => (props.visited ? '#c63f17b5' : '#c63f17')};
+    transition: background-color 0.4s, color 0.4s;
+    color: rgba(255, 255, 255, ${props => (props.visited ? '0.6' : '0.85')});
+    font-weight: 500;
 `
 const Title = styled.div`
     padding-bottom: 5px;
     font-size: 24px;
-    font-weight: 400;
     display: flex;
     align-items: baseline;
     justify-content: flex-start;
@@ -51,7 +52,6 @@ const Title = styled.div`
 `
 const Description = styled.div`
     font-size: 14px;
-    font-weight: 400;
     text-align: justify;
 `
 
@@ -81,12 +81,13 @@ const decode = str => str.replace(/&amp;/g, '&')
 
 const normalizeDesc = compose(
     decode,
-    normalizeLen(182)
+    normalizeLen(176)
 )
 
 class ListItem extends Component {
     static defaultProps = {
         dismiss: () => {},
+        primaryAction: () => {},
     }
 
     state = {
@@ -106,7 +107,7 @@ class ListItem extends Component {
             caption,
             description,
             thumbnailUrl,
-            status,
+            visited,
             show: showProp,
         } = this.props
 
@@ -139,8 +140,8 @@ class ListItem extends Component {
                             Dismiss
                         </SecondaryAction>
                     </Thumbnail>
-                    <Body>
-                        <Title status={status}>
+                    <Body onClick={this.props.primaryAction} visited={visited}>
+                        <Title visited={visited}>
                             <span>{title.toLowerCase()}</span>
                             <div className="caption">
                                 {caption}
@@ -148,7 +149,7 @@ class ListItem extends Component {
                                 {overline}
                             </div>
                         </Title>
-                        <Description status={status}>
+                        <Description visited={visited}>
                             {normalizeDesc(description)}
                         </Description>
                     </Body>

@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getTopList } from 'shared/listings/selectors'
-import { exclude } from 'shared/listings/reducer'
+import { exclude, select } from 'shared/listings/reducer'
 import ListItem from 'shared/ui-kit/listItem'
 
-const TopList = ({ list, dismiss }) =>
+const TopList = ({ list, dismiss, select }) =>
     list.map(item => (
         <ListItem
             key={item.id}
@@ -13,10 +13,11 @@ const TopList = ({ list, dismiss }) =>
             description={item.description}
             caption={item.caption}
             thumbnailUrl={item.thumbnailUrl}
-            status={item.status}
             overline={item.overline}
             show={item.show}
+            visited={item.visited}
             dismiss={() => dismiss(item.id)}
+            primaryAction={() => select(item.id)}
         />
     ))
 
@@ -26,6 +27,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     dismiss: id => dispatch(exclude({ id })),
+    select: id => dispatch(select({ id })),
 })
 
 export default connect(

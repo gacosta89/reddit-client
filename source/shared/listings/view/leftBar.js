@@ -40,7 +40,7 @@ class LeftBar extends Component {
                 <div
                     tabIndex={0}
                     style={{
-                        width: 415,
+                        width: 475,
                         overflowX: 'hidden',
                         marginRight: -10,
                     }}
