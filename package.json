@@ -98,7 +98,7 @@
   "homepage": "https://github.com/gacosta89/fancy-helloworld",
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint && yarn run test"
+      "pre-commit": "yarn run lint"
     }
   }
 }
