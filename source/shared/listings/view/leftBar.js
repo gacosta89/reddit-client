@@ -11,7 +11,7 @@ const getDrawer = props => (props.isMobile ? SwipeableDrawer : Drawer)
 
 const getDrawerProps = props =>
     props.isMobile
-        ? { open: props.opened, disableSwipeToOpen: false }
+        ? { open: props.opened, disableSwipeToOpen: false, swipeAreaWidth: 40 }
         : { variant: 'permanent' }
 
 class LeftBar extends Component {
@@ -42,7 +42,7 @@ class LeftBar extends Component {
                     style={{
                         width: 475,
                         overflowX: 'hidden',
-                        marginRight: -10,
+                        marginRight: -7,
                     }}
                     className="left-bar"
                 >

@@ -7651,3 +7651,7 @@ yauzl@^2.5.0:
   dependencies:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.0.1"
+
+zingtouch@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/zingtouch/-/zingtouch-1.0.6.tgz#456cf2b0a69f91a5ffbd8a83b18033c671f1096d"

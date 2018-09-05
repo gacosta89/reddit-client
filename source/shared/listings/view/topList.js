@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getTopList } from 'shared/listings/selectors'
+import { getIsMobile } from 'shared/app/selectors'
 import { exclude, select } from 'shared/listings/reducer'
 import ListItem from 'shared/ui-kit/listItem'
 
-const TopList = ({ list, dismiss, select }) =>
+const TopList = ({ list, dismiss, select, isMobile }) =>
     list.map(item => (
         <ListItem
             key={item.id}
@@ -18,11 +19,13 @@ const TopList = ({ list, dismiss, select }) =>
             visited={item.visited}
             dismiss={() => dismiss(item.id)}
             primaryAction={() => select(item.id)}
+            isMobile={isMobile}
         />
     ))
 
 const mapStateToProps = state => ({
     list: getTopList(state),
+    isMobile: getIsMobile(state),
 })
 
 const mapDispatchToProps = dispatch => ({
