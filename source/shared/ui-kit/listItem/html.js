@@ -11,12 +11,12 @@ export const Container = styled(Paper)`
     display: flex;
     flex-direction: row;
     height: 130px;
-    margin: 5px;
+    margin: 6px;
     overflow: hidden;
     position: ${props => (props.isMobile ? 'relative' : 'static')};
     z-index: ${props => (props.isMobile ? '10' : '0')};
     right: ${props => (props.toLeft ? '85px' : '0')};
-    transition: right 0.5s;
+    transition: right 0.3s;
 `
 
 export const Thumbnail = styled.div`
@@ -35,8 +35,8 @@ export const Body = styled.div`
     flex: 1;
     padding: 16px;
     background-color: ${props => (props.visited ? '#c63f17b5' : '#c63f17')};
-    transition: background-color 0.4s, color 0.4s;
-    color: rgba(255, 255, 255, ${props => (props.visited ? '0.6' : '0.85')});
+    transition: background-color 0.3s, color 0.3s;
+    color: rgba(255, 255, 255, ${props => (props.visited ? '0.6' : '0.95')});
     font-weight: 500;
 `
 
@@ -82,7 +82,7 @@ export const SecondaryActionBottom = styled(SecondaryAction)`
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: bottom 0.5s;
+    transition: bottom 0.3s;
     bottom: ${props => (props.show ? '0px' : '-26px')};
     z-index: 20;
 `
@@ -94,6 +94,6 @@ export const SecondaryActionRight = styled(SecondaryAction)`
     align-items: center;
     justify-content: center;
     right: 1px;
-    top: 0;
+    top: 1px;
     margin: 5px;
 `

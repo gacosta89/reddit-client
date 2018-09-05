@@ -1,8 +1,15 @@
+import { delay } from 'redux-saga'
 import { take, call, put, select } from 'redux-saga/effects'
 
-import { GET_TOP, topResponse } from 'shared/listings/reducer'
+import {
+    GET_TOP,
+    DISMISS_ALL,
+    dismiss,
+    topResponse,
+} from 'shared/listings/reducer'
 import { getToken } from 'shared/auth/selectors'
 import { getApiBaseUrl } from 'shared/app/selectors'
+import { getTopList } from 'shared/listings/selectors'
 
 const getFromReddit = function*(path, params = { headers: {} }) {
     const token = yield select(getToken)
@@ -35,5 +42,18 @@ export const top = function*() {
 
             yield put(topResponse({ list: children }))
         }
+    }
+}
+
+export const dismissAll = function*() {
+    yield take(DISMISS_ALL)
+
+    const current = yield select(getTopList)
+
+    for (let i = current.length - 1; i >= 0; i--) {
+        const { id } = current[i]
+
+        yield put(dismiss({ id }))
+        yield delay(100)
     }
 }

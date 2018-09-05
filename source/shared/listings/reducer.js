@@ -12,6 +12,9 @@ export const topResponse = ns.createAction(TOP_RESPONSE)
 export const DISMISS = ns.defineType('DISMISS')
 export const dismiss = ns.createAction(DISMISS)
 
+export const DISMISS_ALL = ns.defineType('DISMISS_ALL')
+export const dismissAll = ns.createAction(DISMISS_ALL)
+
 export const EXCLUDE = ns.defineType('EXCLUDE')
 export const exclude = ns.createAction(EXCLUDE)
 

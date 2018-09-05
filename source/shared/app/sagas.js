@@ -1,6 +1,6 @@
 import { call, fork, put, select } from 'redux-saga/effects'
 
-import { top } from 'shared/listings/sagas'
+import { top, dismissAll } from 'shared/listings/sagas'
 import { token } from 'shared/auth/sagas'
 import { getTop } from 'shared/listings/reducer'
 import { setDevice } from 'shared/app/reducer/config'
@@ -17,6 +17,7 @@ const rootSaga = function*() {
     }
 
     yield fork(top)
+    yield fork(dismissAll)
 
     yield put(getTop())
 }
