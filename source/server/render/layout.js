@@ -1,4 +1,4 @@
-export default ({ title, rootMarkup, initialState }) => {
+export default ({ title, rootMarkup = '', initialState = {} }) => {
     return `
     <!doctype html>
     <html>

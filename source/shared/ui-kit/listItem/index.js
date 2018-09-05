@@ -89,16 +89,26 @@ class ListItem extends Component {
                 ReactDOM.findDOMNode(this.swipableRef),
                 'pan',
                 e => {
-                    if (e.detail.data[0].currentDirection === 360) {
-                        this.pan('right')
+                    const { currentDirection } = e.detail.data[0]
+                    let direction = ''
+
+                    if (
+                        (currentDirection < 315 && currentDirection > 360) ||
+                        (currentDirection > 0 && currentDirection < 45)
+                    ) {
+                        direction = 'right'
                     }
-                    if (e.detail.data[0].currentDirection === 180) {
-                        this.pan('left')
+                    if (currentDirection > 135 && currentDirection < 225) {
+                        direction = 'left'
                     }
-                    e.detail.events.forEach(event => {
-                        event.originalEvent.preventDefault()
-                        event.originalEvent.stopPropagation()
-                    })
+
+                    if (direction !== '') {
+                        this.pan(direction)
+                        e.detail.events.forEach(event => {
+                            event.originalEvent.preventDefault()
+                            event.originalEvent.stopPropagation()
+                        })
+                    }
                 }
             )
         }
