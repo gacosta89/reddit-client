@@ -34,7 +34,7 @@ export const top = function*() {
     for (;;) {
         yield take(GET_TOP)
 
-        const res = yield call(getFromReddit, '/top?limit=25')
+        const res = yield call(getFromReddit, '/top?limit=50')
 
         if (res.ok) {
             const {
