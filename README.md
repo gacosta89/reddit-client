@@ -1,3 +1,24 @@
+## Live in 
+
+* [Reddit Client](https://gacosta89.github.io/reddit-client/#/)
+
+## How it works
+
+* Theres one page `/top` with a left bar and list with top 50 reddits
+* In desktop mode the left bar is fixed, reddits can be navigated by clicking the cards
+* In mobile mode the left bar is swipeable, reddits can be navigated by tapping and dismissed by swiping the reddit to the left
+* Reddits can be dissmised in the detail view, and you can navigate to the original url by tapping the main img
+* State is persisted in the local storage if available. But the app will reload the list after a dismiss all and F5
+
+## Missing Features / bugs
+
+* Fix overfloading text in phone devices
+* Hide the scrollbar in mobile
+* Unit test components with enzyme and jest
+* Add loaders when fetching images
+
+* Update to react router v4 and figure out how to sync router v4 with the state
+
 ## Requeriments
 
 * Node 10.9.0 or nvm
@@ -31,23 +52,6 @@ yarn run test:e2e
 ## CI width Circle CI
 
 * [develop](https://circleci.com/gh/gacosta89/reddit-client/tree/develop)
-
-## How it works
-
-* Theres one page `/top` with a left bar and list with top 50 reddits
-* In desktop mode the left bar is fixed, reddits can be navigated by clicking the cards
-* In mobile mode the left bar is swipeable, reddits can be navigated by tapping and dismissed by swiping the reddit to the left
-* Reddits can be dissmised in the detail view, and you can navigate to the original url by tapping the main img
-* State is persisted in the local storage if available. But the app will reload the list after a dismiss all and F5
-
-## Missing Features / bugs
-
-* Fix overfloading text in phone devices
-* Hide the scrollbar in mobile
-* Unit test components with enzyme and jest
-* Add loaders when fetching images
-
-* Update to react router v4 and figure out how to sync router v4 with the state
 
 ## Tech stack
 
