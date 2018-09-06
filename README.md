@@ -36,8 +36,9 @@ yarn run test:e2e
 
 * Theres one page `/top` with a left bar and list with top 50 reddits
 * In desktop mode the left bar is fixed, reddits can be navigated by clicking the cards
-* In mobile mode the left bar is swipeable, reddits can be navigated by tapping and dissmised by swiping the reddit to the left
+* In mobile mode the left bar is swipeable, reddits can be navigated by tapping and dismissed by swiping the reddit to the left
 * Reddits can be dissmised in the detail view, and you can navigate to the original url by tapping the main img
+* State is persisted in the local storage if available. But the app will reload the list after a dismiss all and F5
 
 ## Missing Features / bugs
 
@@ -75,3 +76,4 @@ The idea is to put reusable code into the core package and be able to churn out 
 ## PD
 
 As always I enjoyed doing this assignments. I hope you like it, I did it with love.
+ 
