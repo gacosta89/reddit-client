@@ -41,8 +41,6 @@ export const top = function*() {
                 data: { children },
             } = yield call([res, res.json])
 
-            console.log(children.length)
-
             yield put(topResponse({ list: children }))
         }
     }

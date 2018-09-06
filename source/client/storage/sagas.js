@@ -5,16 +5,7 @@ import { identity as id } from 'ramda'
 import { putStorage, getStorage } from 'client/storage/utils'
 import * as storage from 'shared/storage/reducer'
 
-const shallowEqual = (a, b) => {
-    const aKeys = Object.keys(a)
-    const bKeys = Object.keys(b)
-
-    if (aKeys.length !== bKeys.length) {
-        return false
-    }
-
-    return aKeys.every(key => a[key] === b[key])
-}
+import { shallowEqual } from 'shared/utils/object'
 
 const countActions = function*(count) {
     for (let i = 0; i < count; i++) {

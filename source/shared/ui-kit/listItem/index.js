@@ -25,11 +25,6 @@ const normalizeDesc = compose(
     normalizeLen(176)
 )
 
-const log = (ns, data) => {
-    console.log(ns, data)
-    return data
-}
-
 class ListItem extends Component {
     static propTypes = {
         title: PropTypes.node.isRequired,
@@ -63,8 +58,8 @@ class ListItem extends Component {
         toLeft: false,
     }
 
-    onMouseEnter = () => this.setState({ hovered: log('hovered', true) })
-    onMouseLeave = () => this.setState({ hovered: log('hovered', false) })
+    onMouseEnter = () => this.setState({ hovered: true })
+    onMouseLeave = () => this.setState({ hovered: false })
     onDismiss = () => this.setState({ show: false })
 
     pan = side => {
