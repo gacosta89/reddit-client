@@ -9,6 +9,11 @@ module.exports = {
             .waitForElementVisible('body', WAIT)
             .assert.elementPresent('.left-bar')
             .waitForElementVisible('.left-bar > div:first-child', WAIT)
-            .expect.element('.left-bar > div:nth-child(25)').to.be.present
+            .waitForElementVisible(
+                '.left-bar > div:first-child > div:nth-child(4)',
+                WAIT
+            )
+            .expect.element('.left-bar > div:first-child > div:nth-child(25)')
+            .to.be.present
     },
 }

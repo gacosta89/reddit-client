@@ -180,7 +180,7 @@ class ListItem extends Component {
                                 {overline}
                             </div>
                         </Title>
-                        <Description visited={visited}>
+                        <Description visited={visited} className="description">
                             {normalizeDesc(description)}
                         </Description>
                     </Body>

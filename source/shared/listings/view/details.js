@@ -32,18 +32,25 @@ const MediaCard = ({ post, dismiss, navigate }) =>
     !post.title ? (
         ''
     ) : (
-        <CardContainer>
+        <CardContainer className="detail-page">
             <CardActionArea onClick={navigate}>
                 <CardImg component="img" image={post.imgUrl} />
                 <CardContent>
                     <Typography gutterBottom variant="headline" component="h2">
                         {post.title}
                     </Typography>
-                    <Typography component="p">{post.description}</Typography>
+                    <Typography component="p" className="description">
+                        {post.description}
+                    </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary" onClick={dismiss}>
+                <Button
+                    size="small"
+                    color="primary"
+                    onClick={dismiss}
+                    className="dismiss"
+                >
                     Dismiss
                 </Button>
             </CardActions>
