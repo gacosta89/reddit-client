@@ -19,6 +19,7 @@ const shallowEqual = (a, b) => {
 const countActions = function*(count) {
     for (let i = 0; i < count; i++) {
         yield take('*')
+        yield call(delay, 300)
     }
 }
 

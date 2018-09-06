@@ -7,6 +7,8 @@ import {
     getTop,
     dismiss,
     topResponse,
+    setActive,
+    clearList,
 } from 'shared/listings/reducer'
 import { getToken } from 'shared/auth/selectors'
 import { getApiBaseUrl } from 'shared/app/selectors'
@@ -48,6 +50,7 @@ export const top = function*() {
 
 export const dismissAll = function*() {
     yield take(DISMISS_ALL)
+    yield put(setActive({ id: '' }))
 
     const current = yield select(getTopList)
 
@@ -57,6 +60,8 @@ export const dismissAll = function*() {
         yield put(dismiss({ id }))
         yield delay(100)
     }
+
+    yield put(clearList())
 }
 
 const init = function*() {

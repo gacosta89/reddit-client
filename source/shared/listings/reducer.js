@@ -20,8 +20,14 @@ export const dismissAll = ns.createAction(DISMISS_ALL)
 export const DISMISS_ACTIVE = ns.defineType('DISMISS_ACTIVE')
 export const dismissActive = ns.createAction(DISMISS_ACTIVE)
 
+export const SET_ACTIVE = ns.defineType('SET_ACTIVE')
+export const setActive = ns.createAction(SET_ACTIVE)
+
 export const EXCLUDE = ns.defineType('EXCLUDE')
 export const exclude = ns.createAction(EXCLUDE)
+
+export const CLEAR_LIST = ns.defineType('CLEAR_LIST')
+export const clearList = ns.createAction(CLEAR_LIST)
 
 export const SELECT = ns.defineType('SELECT')
 export const select = ns.createAction(SELECT)
@@ -94,6 +100,14 @@ export default ns.createReducer(
                     exclude: true,
                 },
             },
+        }),
+        [CLEAR_LIST]: state => ({
+            ...state,
+            top: {},
+        }),
+        [SET_ACTIVE]: (state, { payload: { id: activeId } }) => ({
+            ...state,
+            activeId,
         }),
         [SELECT]: (state, { payload: { id } }) => ({
             ...state,
