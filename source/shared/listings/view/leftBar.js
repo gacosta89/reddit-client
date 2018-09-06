@@ -14,14 +14,20 @@ import { dismissAll } from 'shared/listings/reducer'
 
 const Container = styled.div`
     width: 475px;
+    height: 100%;
+    @media only screen and (max-width: 495px) {
+        width: 100%;
+    }
     overflow-x: hidden;
     margin-right: -7px;
+    display: flex;
+    flex-direction: column;
     .dismiss {
         background-color: #373737;
-        width: 100%;
         height: 50px;
-        margin-top: 10px;
+        margin: 10px 13px 5px 5px;
         color: rgba(255, 255, 255, 0.85);
+        box-sizing: content-box;
     }
 `
 
@@ -29,6 +35,11 @@ const getDrawer = props =>
     withStyles({
         paper: {
             overflow: 'hidden',
+        },
+        '@media only screen and (max-width: 495px)': {
+            paper: {
+                width: '80%',
+            },
         },
     })(props.isMobile ? SwipeableDrawer : Drawer)
 
@@ -59,10 +70,11 @@ class LeftBar extends Component {
                 {...drawerProps}
                 onOpen={this.onOpen}
                 onClose={this.onClose}
-                style={{ overflow: 'hidden' }}
             >
                 <Container tabIndex={0} className="left-bar">
-                    <TopList />
+                    <div style={{ flex: 1, overflowX: 'hidden' }}>
+                        <TopList />
+                    </div>
                     <Button
                         className="dismiss"
                         variant="contained"

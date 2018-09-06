@@ -4,6 +4,7 @@ export default ({ title, rootMarkup = '', initialState = {} }) => {
     <html>
       <head>
         <title>${title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="/static/assets/favicon.png">
         <link href="/static/assets/normalize.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

@@ -11,6 +11,9 @@ export const Container = styled(Paper)`
     display: flex;
     flex-direction: row;
     height: 130px;
+    @media only screen and (max-width: 495px) {
+        height: 160px;
+    }
     margin: 6px;
     overflow: hidden;
     position: ${props => (props.isMobile ? 'relative' : 'static')};
@@ -59,6 +62,7 @@ export const Title = styled.div`
 export const Description = styled.div`
     font-size: 14px;
     text-align: justify;
+    text-overflow: ellipsis;
 `
 
 const SecondaryAction = styled.div`
@@ -90,6 +94,9 @@ export const SecondaryActionBottom = styled(SecondaryAction)`
 export const SecondaryActionRight = styled(SecondaryAction)`
     position: absolute;
     height: 130px;
+    @media only screen and (max-width: 495px) {
+        height: 160px;
+    }
     display: flex;
     align-items: center;
     justify-content: center;
