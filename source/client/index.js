@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { createStore, applyMiddleware, compose } from 'redux'
-import { browserHistory } from 'react-router'
+import { hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 
@@ -16,7 +16,7 @@ import 'normalize.css/normalize.css'
 const iniState = window.BOOTSTRAP_CLIENT_STATE
 
 const sagaMiddleware = createSagaMiddleware()
-const routerMW = routerMiddleware(browserHistory)
+const routerMW = routerMiddleware(hashHistory)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose // eslint-disable-line
 
 const store = createStore(
@@ -27,7 +27,7 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga)
 
-const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(hashHistory, store)
 
 if (process.env.NODE_ENV !== 'production') {
     const { AppContainer } = require('react-hot-loader')
