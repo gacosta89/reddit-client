@@ -6,7 +6,6 @@ import { browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 
-import i18n from 'shared/app/i18n'
 import App from 'shared/app/main'
 
 import rootReducer from 'shared/app/reducer'
@@ -35,7 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 
     ReactDOM.render(
         <AppContainer>
-            <App history={history} store={store} i18n={i18n} />
+            <App history={history} store={store} />
         </AppContainer>,
         document.getElementById('root')
     )
@@ -49,14 +48,14 @@ if (process.env.NODE_ENV !== 'production') {
 
         ReactDOM.render(
             <AppContainer>
-                <NextApp history={history} store={store} i18n={i18n} />
+                <NextApp history={history} store={store} />
             </AppContainer>,
             document.getElementById('root')
         )
     })
 } else {
     ReactDOM.render(
-        <App history={history} store={store} i18n={i18n} />,
+        <App history={history} store={store} />,
         document.getElementById('root')
     )
 }
