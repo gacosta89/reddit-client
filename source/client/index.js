@@ -9,7 +9,7 @@ import createSagaMiddleware from 'redux-saga'
 import App from 'shared/app/main'
 
 import rootReducer from 'shared/app/reducer'
-import rootSaga from 'shared/app/sagas'
+import rootSaga from 'client/rootSaga'
 
 import 'normalize.css/normalize.css'
 

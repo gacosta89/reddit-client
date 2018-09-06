@@ -1,6 +1,8 @@
 import { createDuck } from 'redux-duck'
 import { indexBy, prop, map, compose, merge } from 'ramda'
 
+import { RESTORE } from 'shared/storage/reducer'
+
 const ns = createDuck('listings')
 
 export const GET_TOP = ns.defineType('GET_TOP')
@@ -105,6 +107,10 @@ export default ns.createReducer(
             },
             trackPrevious: [...state.trackPrevious, state.activeId],
         }),
+        [RESTORE]: (state, { payload }) =>
+            payload && payload.st && payload.st.listings
+                ? { ...state, ...payload.st.listings }
+                : state,
     },
     iniState
 )

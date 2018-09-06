@@ -4,6 +4,7 @@ import { take, call, put, select, all, fork } from 'redux-saga/effects'
 import {
     GET_TOP,
     DISMISS_ALL,
+    getTop,
     dismiss,
     topResponse,
 } from 'shared/listings/reducer'
@@ -58,8 +59,16 @@ export const dismissAll = function*() {
     }
 }
 
+const init = function*() {
+    const topList = yield select(getTopList)
+
+    if (topList.length === 0) {
+        yield put(getTop())
+    }
+}
+
 const main = function*() {
-    return yield all([fork(top), fork(dismissAll)])
+    return yield all([fork(top), fork(dismissAll), fork(init)])
 }
 
 export default main
