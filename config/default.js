@@ -3,7 +3,7 @@ var path = require('path')
 const homeFolder = path.join(__dirname, '../')
 
 module.exports = {
-    name: 'Fancy Hello World',
+    name: 'Reddit Client',
     folders: {
         home: homeFolder,
         client: {
