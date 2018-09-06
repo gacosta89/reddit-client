@@ -12,6 +12,7 @@ export const getActivePost = createSelector(
             ? {
                   title: post.author,
                   description: post.title,
+                  permalink: post.permalink,
                   imgUrl:
                       (post.preview &&
                           post.preview.images[0] &&

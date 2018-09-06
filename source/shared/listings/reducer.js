@@ -36,7 +36,7 @@ const iniState = {
     top: {},
     fetching: {},
     activeId: '',
-    trackPrevious: '',
+    trackPrevious: [],
 }
 
 const byId = compose(
@@ -84,11 +84,14 @@ export default ns.createReducer(
                           [state.activeId]: {
                               ...state.top[state.activeId],
                               show: false,
+                              exclude: true,
                           },
                       },
                       activeId:
                           state.trackPrevious[state.trackPrevious.length - 1],
-                      trackPrevious: state.trackPrevious.slice(0, -1),
+                      trackPrevious: state.trackPrevious
+                          .filter(pid => pid !== state.activeId)
+                          .slice(0, -1),
                   }
                 : state,
         [EXCLUDE]: (state, { payload: { id } }) => ({
@@ -100,10 +103,20 @@ export default ns.createReducer(
                     exclude: true,
                 },
             },
+            activeId:
+                id === state.activeId
+                    ? state.trackPrevious[state.trackPrevious.length - 1]
+                    : state.activeId,
+            trackPrevious:
+                id === state.activeId
+                    ? state.trackPrevious.filter(pid => pid !== id).slice(0, -1)
+                    : state.trackPrevious.filter(pid => pid !== id),
         }),
         [CLEAR_LIST]: state => ({
             ...state,
             top: {},
+            activeId: '',
+            trackPrevious: [],
         }),
         [SET_ACTIVE]: (state, { payload: { id: activeId } }) => ({
             ...state,

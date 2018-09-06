@@ -111,7 +111,11 @@ class ListItem extends Component {
 
     componentWillUnmount() {
         if (this.props.isMobile) {
-            this.region.unbind(ReactDOM.findDOMNode(this.swipableRef), 'pan')
+            const node = ReactDOM.findDOMNode(this.swipableRef)
+
+            if (node) {
+                this.region.unbind(node, 'pan')
+            }
         }
     }
 
