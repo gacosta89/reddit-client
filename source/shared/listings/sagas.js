@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga'
-import { take, call, put, select } from 'redux-saga/effects'
+import { take, call, put, select, all, fork } from 'redux-saga/effects'
 
 import {
     GET_TOP,
@@ -57,3 +57,9 @@ export const dismissAll = function*() {
         yield delay(100)
     }
 }
+
+const main = function*() {
+    return yield all([fork(top), fork(dismissAll)])
+}
+
+export default main

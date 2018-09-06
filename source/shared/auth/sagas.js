@@ -3,7 +3,7 @@ import { call, put, select } from 'redux-saga/effects'
 import { getAuthUrl } from 'shared/app/selectors'
 import { setToken } from 'shared/auth/reducer'
 
-export const token = function*() {
+const token = function*() {
     const url = yield select(getAuthUrl)
 
     const params = new URLSearchParams()
@@ -26,3 +26,5 @@ export const token = function*() {
         yield put(setToken({ token: data.access_token }))
     }
 }
+
+export default token
