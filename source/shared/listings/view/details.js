@@ -58,11 +58,14 @@ const MediaCard = ({ post, dismiss, navigate }) =>
     )
 
 MediaCard.propTypes = {
-    classes: PropTypes.object.isRequired,
+    post: PropTypes.object.isRequired,
+    dismiss: PropTypes.func,
+    navigate: PropTypes.func,
 }
 
 MediaCard.defaultProps = {
-    imgUrl: '/static/images/cards/contemplative-reptile.jpg',
+    dismiss: () => {},
+    navigate: () => {},
 }
 
 const mapStateToProps = state => ({
