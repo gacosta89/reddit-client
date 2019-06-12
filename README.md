@@ -1,7 +1,3 @@
-## Live in 
-
-* [Reddit Client](https://gacosta89.github.io/reddit-client/#/)
-
 ## How it works
 
 * Theres one page `/top` with a left bar and list with top 50 reddits
